@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  const history = useNavigate()
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,20 +12,24 @@ async function registerUser(event) {
 
   console.log("Registering User")
   console.log(name, email, password)
-  const response = await fetch('http://localhost:1337/api/register', {
-    method: 'POST',
-    headers: {
-      'content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      name, 
-      email,
-      password,
-    }),
-  })
 
-  const data = await response.json()
-  console.log(data)
+    const response = await fetch('http://localhost:1337/api/register', {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name, 
+        email,
+        password,
+      }),
+    })
+
+    const data = await response.json()
+
+    if(data.status === 'ok') {
+      history.push('/login')
+    }
   }
 
   return (

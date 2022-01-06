@@ -23,8 +23,9 @@ async function loginUser(event) {
   const data = await response.json()
 
   if(data.user) {
+    localStorage.setItem('token', data.user)
     alert('Login Successful')
-    window.location.href = '/quote'
+    window.location.href = '/dashboard'
   } else {
     alert('Please check your email or password')
 

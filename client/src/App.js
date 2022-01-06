@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 
@@ -10,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/login" exact element={ <Login />  } />
           <Route path="/register" exact element={ <Register />  } />
+          <Route path="/dashboard" exact element={ <Dashboard />  } />
         </Routes>
       </BrowserRouter>
 
