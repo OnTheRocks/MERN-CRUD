@@ -25,12 +25,12 @@ app.post('/api/register', async (req, res) => {
 })
 
 app.post('/api/login', async (req, res) => {
-      await User.findOne({
+  const user = await User.findOne({
           email: req.body.email,
           password: req.body.password,
       })
 
-      if (User) {
+      if (user) {
         return res.json({ status: 'OK', user: true })
       } else {
         return res.json({ status: 'error', user: false })
