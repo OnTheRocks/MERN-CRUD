@@ -21,6 +21,15 @@ async function loginUser(event) {
   })
 
   const data = await response.json()
+
+  if(data.user) {
+    alert('Login Successful')
+    window.location.href = '/quote'
+  } else {
+    alert('Please check your email or password')
+
+  }
+
   console.log(data)
   }
 
